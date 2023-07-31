@@ -1,0 +1,37 @@
+PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER[], VAR ps : INTEGER)
+    
+BEGIN
+    // Calculate the dot product of v1 and v2
+    ps := 0
+    FOR i FROM 0 TO v1.length-1 DO
+        ps := ps + (v1[i] * v2[i]);
+    END_FOR
+END
+
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER[]) : INTEGER
+BEGIN
+    ps := 0
+    FOR i FROM 0 TO v1.length-1 DO
+        ps := ps + (v1[i] * v2[i]);
+    END_FOR
+    Return ps;
+END
+
+ALGORITHM check_orthogonal_vectors
+VAR
+    n,i : INTEGER;
+BEGIN
+    FOR i FROM 1 TO n Do
+        // Read the components of two vectors v1 and v2
+        Read(v1);
+        Read(v2);
+        
+        // Call the function dot_product to calculate the dot product
+        ps := dot_product(v1, v2);
+        IF (ps = 0) THEN
+            Write("The vectors are orthogonal.");
+        ELSE
+            Write("The vectors are not orthogonal.");
+        END_IF
+    END_FOR
+END
